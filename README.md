@@ -24,7 +24,7 @@ The Audubon Society has asked you to build them a website where users can see an
 
 ### Step 1. Install React Router
 
-To set up your project to use React Router, you'll need to install it, import the BrowserRouter component, and then use that component to wrap the App component in the index.js file exactly in the same way that we did it during the [lecture](https://git.generalassemb.ly/sei-921/react-router/blob/master/README.md#importing-dependencies).
+To set up your project to use React Router, you'll need to install it, import the BrowserRouter component, and then use that component to wrap the App component in the index.js file exactly in the same way that we did it during the [lecture](https://git.generalassemb.ly/SEIR-1130/react-router/blob/master/README.md#importing-dependencies).
 
 1. Use the npm command to install `react-router-dom`.
 1. In the index.js file `import { BrowserRouter as Router } from 'react-router-dom'`.
@@ -72,7 +72,7 @@ Next, we'll need to add useEffect to the component's function. Make sure to add 
 useEffect(() => {}, []);
 ```
 
-Now, you can add your fetch request inside the curly braces of the callback function. The url for our birds API is: https://audubon-api.herokuapp.com/api/birds. Use the pattern in the [AJAX & APIs](https://git.generalassemb.ly/sei-921/APIs-Ajax#the-api-response) lecture for your fetch call:
+Now, you can add your fetch request inside the curly braces of the callback function. The url for our birds API is: https://audubon-api.herokuapp.com/api/birds. Use the pattern in the [AJAX & APIs](https://git.generalassemb.ly/SEIR-1130/APIs-Ajax#the-api-response) lecture for your fetch call:
 
 ```js
 fetch(url) //<-- the url as a string
@@ -352,6 +352,7 @@ homepage. It should have a form for adding a new bird with fields for:
 - `homepage`: a link to the Audubon Field Guide page.
 
 Make sure you add the functionality so that when the user submits the form, it will "add" the new bird to the "database" and will appear on the home as well as have its own show page. (Please note because there's no real database attached to your app, any newly added bird will disappear upon fully refreshing the page!)
+
 
 **Create Page Mockup:**
 
