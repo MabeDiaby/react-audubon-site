@@ -24,18 +24,18 @@ The Audubon Society has asked you to build them a website where users can see an
 
 ### Step 1. Install React Router
 
-To set up your project to use React Router, you'll need to install it, import the BrowserRouter component, and then use that component to wrap the App component in the index.js file exactly in the same way that we did it during the [lecture](https://git.generalassemb.ly/SEIR-1130/react-router/blob/master/README.md#importing-dependencies).
+To set up your project to use React Router, you'll need to install it, import the `BrowserRouter` component, and then use that component to wrap the `App` component in the `index.js` file exactly in the same way that we did it during the [lecture](https://git.generalassemb.ly/seir-1018/react-router).
 
-1. Use the npm command to install `react-router-dom`.
-1. In the index.js file `import { BrowserRouter as Router } from 'react-router-dom'`.
-1. Wrap the `<App />` component in the `<Router></Router>` component.
-1. Start your server to make sure there are no errors.
+1. Use the `npm` command to install `react-router-dom@5`.
+2. In the index.js file `import { BrowserRouter as Router } from 'react-router-dom'`.
+3. Wrap the `<App />` component in the `<Router></Router>` component.
+4. Start your server to make sure there are no errors.
 
 > Make sure that your server is running on port 3000 (http://localhost:3000) for this assignment. If you have any other servers running shut them down and then restart the server for this assignment.
 
 ### Step 2. Create a Birds component
 
-Create a basic component named Birds put some placeholder text into it so that we can make sure that it's loading. Import the Birds component into App.js and render it inside of the main tags inside of the App component.
+Create a basic component named Birds and put some **placeholder text** into it so that we can make sure that it's loading. Import the Birds component into `App.js` and render it inside of the main tags inside of the App component.
 
 Make sure that you can see the placeholder text being rendered in the browser before you move on to the next step.
 
@@ -43,7 +43,7 @@ Make sure that you can see the placeholder text being rendered in the browser be
 
 We'll be loading some data into the Birds component that we can use once we've fetched it from an API. We'll need a variable in _state_ to hold our data, so create a state variable called `birds` and initialize it with an empty array. Recall that to create state in a component, you'll need to import the `useState` hook and then follow the _pattern_ for creating a state variable:
 
-```js
+```jsx
 // Destructure the array that
 // is returned from useState
 // into a variable to hold the
@@ -54,7 +54,7 @@ const [variable, setVariable] = useState(); // <--Set the initial state here by 
 
 > Make sure that your state variable is inside the component but not inside the function's return statement!
 
-Check the Components tab in the Chrome React Developer tools to make sure that there is an empty array for State in the hooks section when you click on Birds in the component tree.
+Check the Components tab in the **Chrome** React Developer tools to make sure that there is an empty array for State in the hooks section when you click on Birds in the component tree.
 
 ![React Developer Tools showing an empty array in state](https://media.git.generalassemb.ly/user/17300/files/0536b880-12cd-11eb-8dc6-ead3dba1bb91)
 
@@ -68,18 +68,18 @@ import React, { useState, useEffect } from 'react';
 
 Next, we'll need to add useEffect to the component's function. Make sure to add it inside the Bird component function before the `return`. The `useEffect` hook takes two arguments. The first is a callback function and the second is the dependency array. Scaffold the useEffect like this:
 
-```js
+```jsx
 useEffect(() => {}, []);
 ```
 
-Now, you can add your fetch request inside the curly braces of the callback function. The url for our birds API is: https://audubon-api.herokuapp.com/api/birds. Use the pattern in the [AJAX & APIs](https://git.generalassemb.ly/SEIR-1130/APIs-Ajax#the-api-response) lecture for your fetch call:
+Now, you can add your fetch request inside the curly braces of the callback function. The url for our birds API is: https://audubon-api.herokuapp.com/api/birds. Use the pattern in the [AJAX & APIs](https://git.generalassemb.ly/seir-1018/APIs-Ajax/blob/master/readme.md#the-api-response) lecture for your fetch call:
 
 ```js
 fetch(url) //<-- the url as a string
   // Wait for the response and convert it to json
-  .then((res) => res.json())
+  .then(res => res.json())
   // Take the json and do something with it
-  .then((json) => {
+  .then(json => {
     // the json parameter holds the json data
     // so here's where you will need to
     // use the setBirds method put the json into state
@@ -88,16 +88,15 @@ fetch(url) //<-- the url as a string
   .catch(console.error);
 ```
 
-Leave the dependency array (the second argument) empty to signal to React that it should only run this useEffect one time when the component is mounted, so that we don't get an infinite loop of fetch requests.
+Leave the dependency array (the second argument) empty `[]` to signal to React that it should only run this useEffect **one time** when the component is mounted, so that we don't get an infinite loop of fetch requests.
 
-Check the Components tab again in the browser and make sure
-you are getting the data in the Bird component before moving on!
+Check the Components tab again in the browser's React Developer Tools and make sure you are getting the data in the Bird component before moving on!
 
 ![React Developer Tools showing the bird data in state](https://media.git.generalassemb.ly/user/17300/files/85135180-12d2-11eb-8c4f-fc4a05426323)
 
 ### Step 5. Display the Birds
 
-Now that we have data we can display the birds on the page. There are already some classes that are loaded in the index.css file that we'll use to style the page, so replace the placeholder text in the Bird component's return with some JSX that produces the following HTML.
+Now that we have data we can display the birds on the page. There are already some classes that are loaded in the `index.css` file that we'll use to style the page, so replace the placeholder text in the Bird component's return with some JSX that produces the following HTML.
 
 First, just get your JSX to correctly output the HTML with hardcoded data:
 
@@ -175,7 +174,7 @@ Next, take the entire `div` with the className of card and move it inside the re
 ```jsx
 return (
   <section className="container">
-    {birds.map((bird) => {
+    {birds.map(bird => {
       return (
         <div className="card">
           <div className="card-image">
@@ -277,7 +276,7 @@ To make each bird's card clickable, we'll wrap the entire div with the className
 
 ```jsx
 {
-  birds.map((bird) => (
+  birds.map(bird => (
     <Link to={`/details/${bird.id}`} key={bird.id}>
       <div className="card">
         <div className="card-image">
@@ -342,8 +341,7 @@ How can we get the id of the bird? Dot into it through the props object (or you 
 
 Finished everything above and want to stretch your brain? Try adding a static create route.
 
-**Create Page:** Users should be able to navigate to this page from the
-homepage. It should have a form for adding a new bird with fields for:
+**Create Page:** Users should be able to navigate to this page from the homepage. It should have a form for adding a new bird with fields for:
 
 - `name`: the bird's common name
 - `genus`: the bird's scientific name
@@ -353,7 +351,6 @@ homepage. It should have a form for adding a new bird with fields for:
 
 Make sure you add the functionality so that when the user submits the form, it will "add" the new bird to the "database" and will appear on the home as well as have its own show page. (Please note because there's no real database attached to your app, any newly added bird will disappear upon fully refreshing the page!)
 
-
 **Create Page Mockup:**
 
 ![create page](https://media.git.generalassemb.ly/user/8618/files/25bc5570-cbb6-11e8-9912-eb843afec31c)
@@ -362,6 +359,4 @@ Make sure you add the functionality so that when the user submits the form, it w
 
 ## Plagiarism
 
-Take a moment to refamiliarize yourself with the
-[Plagiarism policy](https://git.generalassemb.ly/DC-WDI/Administrative/blob/master/plagiarism.md).
-Plagiarized work will not be accepted.
+Take a moment to refamiliarize yourself with the [Plagiarism policy](https://git.generalassemb.ly/DC-WDI/Administrative/blob/master/plagiarism.md). Plagiarized work will not be accepted.
