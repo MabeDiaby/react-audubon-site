@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 
 function Birds(props) {
     let url = 'https://audubon-api.herokuapp.com/api/birds'
@@ -19,6 +20,7 @@ useState(() => {
       <section className="container">
       {birds.map(bird => {
         return (
+          <Link to={`/details/${bird.id}`} key={bird.id}>
           <div className="card">
             <div className="card-image">
               <img
@@ -30,6 +32,7 @@ useState(() => {
                           <h3>{bird.name}</h3>
                       </div>
                   </div>
+                  </Link>
               );
           })}   
       </section>
