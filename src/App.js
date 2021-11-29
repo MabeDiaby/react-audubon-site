@@ -13,7 +13,7 @@ function App() {
       </header>
       <main>
           <Route path = "/" exact component={Birds} />
-          <Route path = "/details" component={BirdDetails} />
+          <Route path = "/details:id" component={BirdDetails} />
       </main>
     </>
   );
