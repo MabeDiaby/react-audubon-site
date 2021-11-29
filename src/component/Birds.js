@@ -8,8 +8,8 @@ function Birds(props) {
     
 useState(() => {
     fetch(url)
-    .then(res => res.json())
-    .then(json => {
+    .then((res) => res.json())
+    .then((json) => {
         setBirds(json)
         // console.log(res);
   })
