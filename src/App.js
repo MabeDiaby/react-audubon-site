@@ -1,6 +1,7 @@
 import React from 'react';
 import Birds from './component/Birds';
 import {Route} from 'react-router-dom';
+import BirdDetails from './BirdDetails';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       </header>
       <main>
           <Route path = "/" exact component={Birds} />
+          <Route path = "/details" component={BirdDetails} />
       </main>
     </>
   );
