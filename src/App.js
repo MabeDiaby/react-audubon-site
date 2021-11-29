@@ -1,5 +1,6 @@
 import React from 'react';
 import Birds from './component/Birds';
+import {Route} from 'react-router-dom';
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
         </h1>
       </header>
       <main>
-          <Birds />
+          <Route path = "/" exact component={Birds} />
       </main>
     </>
   );
